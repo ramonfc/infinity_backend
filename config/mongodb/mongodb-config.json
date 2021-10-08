@@ -1,9 +1,9 @@
 {
     "mongodb": {
-      "server": "cluster0.faxrs.mongodb.net",
+      "server": "cluster0.mew8g.mongodb.net",
       "database": "customers-dev",
-      "user": "miusuario",
-      "password": "miclave",
+      "user": "customer_db_dev",
+      "password": "AxmsY4AX10L74IVF",
       "params": ""
     }
   }
