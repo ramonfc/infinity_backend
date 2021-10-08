@@ -1,13 +1,14 @@
 var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
+var cors = require("cors");
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
 var app = express();
 
 var MongoDBUtil = require('./modules/mongodb/mongodb.module').MongoDBUtil;
-var CustomerController = require('./modules/customer/customer.module')().CustomerController;
+var ProductController = require('./modules/product/product.module')().ProductController;
 
 app.use(logger('dev'));
 app.use(express.json());
@@ -16,7 +17,9 @@ app.use(cookieParser());
 
 MongoDBUtil.init();
 
-app.use('/customers', CustomerController);
+app.use(cors());
+
+app.use('/products', ProductController);
 
 app.get('/', function (req, res) {
   var pkg = require(path.join(__dirname, 'package.json'));

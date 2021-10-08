@@ -1,9 +1,9 @@
 {
     "mongodb": {
       "server": "cluster0.mew8g.mongodb.net",
-      "database": "customers-dev",
-      "user": "customer_db_dev",
-      "password": "AxmsY4AX10L74IVF",
+      "database": "infinity",
+      "user": "super-user_infinity",
+      "password": "12345",
       "params": ""
     }
   }
