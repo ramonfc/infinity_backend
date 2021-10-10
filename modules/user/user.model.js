@@ -10,12 +10,12 @@
             type: String,
             required: true
         },
-        lastname: {
+        lastName: {
             type: String,
             required: true
         },
         docType: {
-            type: Number,
+            type: String,
             required: true
         },
         documentId: {
