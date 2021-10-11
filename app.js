@@ -9,11 +9,8 @@ var app = express();
 
 var MongoDBUtil = require('./modules/mongodb/mongodb.module').MongoDBUtil;
 var ProductController = require('./modules/product/product.module')().ProductController;
-<<<<<<< HEAD
 var SaleController = require('./modules/sale/sale.module')().SaleController;
-=======
 var UserController = require('./modules/user/user.module')().UserController;
->>>>>>> 31aeea37f13c5160b3c0ce66edc2f0b719b442e7
 
 app.use(logger('dev'));
 app.use(express.json());
@@ -25,11 +22,8 @@ MongoDBUtil.init();
 app.use(cors());
 
 app.use('/products', ProductController);
-<<<<<<< HEAD
 app.use('/sales', SaleController);
-=======
 app.use('/users', UserController);
->>>>>>> 31aeea37f13c5160b3c0ce66edc2f0b719b442e7
 
 app.get('/', function (req, res) {
   var pkg = require(path.join(__dirname, 'package.json'));
