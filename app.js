@@ -9,8 +9,38 @@ var app = express();
 
 var MongoDBUtil = require('./modules/mongodb/mongodb.module').MongoDBUtil;
 var ProductController = require('./modules/product/product.module')().ProductController;
+var CustomerController = require('./modules/customer/customer.module')().CustomerController;
 var SaleController = require('./modules/sale/sale.module')().SaleController;
 var UserController = require('./modules/user/user.module')().UserController;
+
+// npm install firebase firebase-admin
+// FIREBASE CODE 
+
+const admin = require("firebase-admin");
+
+const serviceAccount = require("./config/firebase/infinity-co-firebase.json");
+
+admin.initializeApp({
+  credential: admin.credential.cert(serviceAccount)
+});
+
+// FUNCION DEL PROFE
+function checkAuth(req, res, next) {
+  if (req.headers?.authorization?.startsWith('Bearer ')) {
+    const idToken = req.headers.authorization.split('Bearer ')[1];
+    admin.auth().verifyIdToken(idToken)
+      .then(() => {
+        next()
+      }).catch((error) => {
+        res.status(403).send('Unauthorized with wrong access_token')
+      });
+  } else {
+    res.status(403).send('Unauthorized')
+  }
+}
+// FIN FUNCION DEL PROFE
+
+
 
 app.use(logger('dev'));
 app.use(express.json());
@@ -21,9 +51,15 @@ MongoDBUtil.init();
 
 app.use(cors());
 
+app.use('*', checkAuth); 
+// recibe todas las rutas de la app y envia
+// a la funcion checkAuth
+app.use('/customers', CustomerController);
 app.use('/products', ProductController);
 app.use('/sales', SaleController);
 app.use('/users', UserController);
+
+
 
 app.get('/', function (req, res) {
   var pkg = require(path.join(__dirname, 'package.json'));
