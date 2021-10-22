@@ -4,6 +4,7 @@ var path = require('path');
 var cors = require("cors");
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+const dotenv = require("dotenv").config()
 
 const admin = require("firebase-admin");
 
