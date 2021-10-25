@@ -4,6 +4,10 @@
     var Schema = mongoose.Schema;
 
     var SaleSchema = new Schema({
+        idVenta: {
+            type: String,
+            required: true
+        },
         idVendedor: {
             type: String,
             required: true
@@ -44,11 +48,12 @@
         
         productos:[{
             sku: String,
-            nombre: String,
-            descripcion: String,
-            cantidad: Number,
-            estado: String,
-            ubicacion: String
+            nombreProducto: String,
+            descripcionProducto: String,
+            cantidadDisponible: Number,
+            estadoProvInv: String,
+            ubicacion: String,
+            precioUnitario: Number
         }]
 
         

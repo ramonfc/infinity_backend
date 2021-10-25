@@ -4,6 +4,15 @@ var path = require('path');
 var cors = require("cors");
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+const dotenv = require("dotenv").config()
+
+const admin = require("firebase-admin");
+
+const serviceAccount = require("./config/firebase/customers-dev-1c53b-firebase-adminsdk-g7bzq-3d5ef09f64.json");
+
+admin.initializeApp({
+  credential: admin.credential.cert(serviceAccount)
+});
 
 var app = express();
 
@@ -51,10 +60,29 @@ MongoDBUtil.init();
 
 app.use(cors());
 
+<<<<<<< HEAD
 app.use('*', checkAuth); 
 // recibe todas las rutas de la app y envia
 // a la funcion checkAuth
 app.use('/customers', CustomerController);
+=======
+function checkAuth(req, res, next) {
+  if (req.headers?.authorization?.startsWith('Bearer ')) {
+    const idToken = req.headers.authorization.split('Bearer ')[1];
+    admin.auth().verifyIdToken(idToken)
+      .then(() => {
+        next()
+      }).catch((error) => {
+        res.status(403).send('Unauthorized')
+      });
+  } else {
+    res.status(403).send('Unauthorized')
+  }
+}
+
+app.use('*', checkAuth);
+
+>>>>>>> ddea838527eafbe50f9825120b9f553ad6a9a950
 app.use('/products', ProductController);
 app.use('/sales', SaleController);
 app.use('/users', UserController);

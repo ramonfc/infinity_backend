@@ -16,9 +16,9 @@
     function addUser(req, res, next) {
         const { name, lastName, docType, documentId, address, telephone, username, password, rol } = req.body;
         try{
-            if ( !name || !lastName || !docType || !documentId || !address || !telephone || !username || !password || !rol ) {
+            /* if ( !name || !lastName || !docType || !documentId || !address || !telephone || !username || !password || !rol ) {
                 throw new BadRequest('Missing required fields');
-            }
+            } */
             UserService.createUser(req.body)
             .then(success)
             .catch(failure);

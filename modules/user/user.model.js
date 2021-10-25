@@ -8,35 +8,41 @@
     var UserSchema = new Schema({
         name: {
             type: String,
-            required: true
+            required: false
         },
         lastName: {
             type: String,
-            required: true
+            required: false
         },
         docType: {
             type: String,
-            required: true
+            required: false
         },
         documentId: {
-            type: Number,
-            required: true
+            type: String,
+            required: false
         },
         username: {
             type: String,
-            required: true
+            required: false
         },
         password: {
             type: String,
-            required: true
+            required: false
         },
         rol: {
             type: String,
-            required: true
+            required: false
         },
-        telephone: Number,
+        telephone: String,
         address: String,
+        
+        status: {
+            type: String,
+            required: false
+        }
     });
 
     module.exports = mongoose.model('users', UserSchema);
+
 })();

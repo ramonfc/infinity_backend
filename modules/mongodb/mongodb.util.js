@@ -7,7 +7,7 @@
 
     var mongoose = require('mongoose');
 
-    var mongodbConfig = require('../../config/mongodb/mongodb-config').mongodb;
+    var mongodbConfig = require('../../config/mongodb/mongo-config').mongodb;
 
     function init() {
         var options = {
@@ -16,6 +16,8 @@
         };
 
         var connectionString = prepareConnectionString(mongodbConfig);
+        console.log("connectionStrinfg: ",connectionString)
+        console.log("mongoconfig:",mongodbConfig)
 
         mongoose.connect(connectionString, options)
             .then(function (result) {
