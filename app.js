@@ -8,11 +8,11 @@ const dotenv = require("dotenv").config()
 
 const admin = require("firebase-admin");
 
-const serviceAccount = require("./config/firebase/customers-dev-1c53b-firebase-adminsdk-g7bzq-3d5ef09f64.json");
+// const serviceAccount = require("./config/firebase/customers-dev-1c53b-firebase-adminsdk-g7bzq-3d5ef09f64.json");
 
-admin.initializeApp({
-  credential: admin.credential.cert(serviceAccount)
-});
+// admin.initializeApp({
+//   credential: admin.credential.cert(serviceAccount)
+// });
 
 var app = express();
 
@@ -25,7 +25,6 @@ var UserController = require('./modules/user/user.module')().UserController;
 // npm install firebase firebase-admin
 // FIREBASE CODE 
 
-const admin = require("firebase-admin");
 
 const serviceAccount = require("./config/firebase/infinity-co-firebase.json");
 
