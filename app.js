@@ -60,12 +60,6 @@ MongoDBUtil.init();
 
 app.use(cors());
 
-<<<<<<< HEAD
-app.use('*', checkAuth); 
-// recibe todas las rutas de la app y envia
-// a la funcion checkAuth
-app.use('/customers', CustomerController);
-=======
 function checkAuth(req, res, next) {
   if (req.headers?.authorization?.startsWith('Bearer ')) {
     const idToken = req.headers.authorization.split('Bearer ')[1];
@@ -81,8 +75,6 @@ function checkAuth(req, res, next) {
 }
 
 app.use('*', checkAuth);
-
->>>>>>> ddea838527eafbe50f9825120b9f553ad6a9a950
 app.use('/products', ProductController);
 app.use('/sales', SaleController);
 app.use('/users', UserController);

@@ -29,9 +29,9 @@
         const { idVendedor, valorTotal, estadoSale, idCliente, nombreCliente, fechaSale, 
         fechaEnvio, fechaEntrega } = req.body;
         try{
-            if (!idVendedor || !valorTotal || !estadoSale || !idCliente || !nombreCliente || !fechaSale || 
-                !fechaEnvio || !fechaEntrega) {
-                throw new BadRequest('Missing required fields');
+            if (!idVendedor ) {  //|| !valorTotal || !estadoSale || !idCliente || !nombreCliente || !fechaSale ||  !fechaEnvio || !fechaEntrega
+               
+                throw new BadRequest('Missing required fields idVendedor');
             }
             SaleService.createSale(req.body)
             .then(success)
